@@ -6,9 +6,9 @@
     <title>Пироги, бизнес‑ланчи, десерты</title>
     <style>
       :root {
-        --primary-green: #2E8B57;
-        --dark-green: #1E5D3A;
-        --bg-pattern: radial-gradient(circle at 50% 50%, #f0f8ff 0%, #e0f7fa 100%);
+        --primary-green: #228B22;       /* Чуть более насыщенный, «природный» зелёный */
+        --dark-green: #1a661a;          /* Тёмно-зелёный для текста */
+        --bg-pattern: radial-gradient(circle at 50% 50%, #f0f9f0 0%, #e6f4ff 100%); /* Лёгкий зеленовато-голубой фон */
       }
 
       body {
@@ -40,22 +40,24 @@
         display: block;
       }
 
-      /* Красивая кнопка «Контакты» */
+      /* Красивая, стильная кнопка */
       .contacts-btn {
         display: inline-block;
-        padding: 0.7rem 1.2rem;
+        padding: 0.75rem 1.3rem;
         background-color: var(--primary-green);
         color: white;
         text-decoration: none;
-        border-radius: 8px;
+        border-radius: 10px;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 4px 6px rgba(46, 139, 87, 0.2);
-        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(34, 139, 34, 0.25);
+        border: 2px solid rgba(255,255,255,0.3); /* Лёгкая белая рамка */
+        transition: all 0.3s ease;
       }
       .contacts-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(46, 139, 87, 0.3);
+        transform: scale(1.03);
+        box-shadow: 0 6px 18px rgba(34, 139, 34, 0.35);
+        background-color: #1e8b1e;
       }
 
       main {
@@ -66,13 +68,15 @@
 
       .hero {
         text-align: center;
-        padding: 3rem 1rem;
-        background: rgba(255,255,255,0.95);
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 2.5rem 1rem; /* Чуть меньше отступов внутри самой карточки */
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        
+        /* ГЛАВНОЕ: поднимаем карточку вверх */
+        margin-top: -1rem; 
       }
 
-      /* Уменьшили заголовок */
       .hero h1 {
         font-size: 2rem;
         margin: 0 0 0.5rem 0;
@@ -86,26 +90,27 @@
         margin: 0 auto;
       }
 
-      /* Улучшенный адаптив: на телефоне всегда 1 колонка, на ПК — сетка */
+      /* Сетка: карточки чуть компактнее */
       .categories {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.8rem;
-        margin-top: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Чуть уже карточки, чтобы влезли все */
+        gap: 1.5rem;
+        margin-top: 2rem;
       }
 
       .category-card {
         background: white;
-        padding: 1.7rem;
+        padding: 1.4rem; /* Уменьшили, чтобы карточки были компактнее */
         border-radius: 14px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         text-align: center;
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .category-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transform: scale(1.04); /* Эффект увеличения вместо простого сдвига */
+        box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        z-index: 10;
       }
       .category-icon {
         font-size: 2.6rem;
@@ -117,8 +122,8 @@
         margin-bottom: 0.5rem;
       }
       .category-desc {
-        color: #555;
-        font-size: 1rem;
+        color: #666;
+        font-size: 0.95rem;
         line-height: 1.5;
       }
 
@@ -134,13 +139,13 @@
       .modal {
         background: white;
         padding: 1.8rem;
-        border-radius: 14px;
+        border-radius: 16px;
         width: 90%;
         max-width: 380px;
-        box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        box-shadow: 0 16px 32px rgba(0,0,0,0.2);
       }
       .btn-close {
-        background: #f0f0f0;
+        background: #f5f5f5;
         border: none;
         padding: 0.8rem 1.4rem;
         border-radius: 8px;
@@ -154,20 +159,22 @@
 
       footer {
         text-align: center;
-        padding: 2.5rem;
-        color: #777;
-        margin-top: 3rem;
-     .hero {
-  margin-top: -16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
-}
+        padding: 3rem 1rem;
+        color: #888;
+        margin-top: 4rem;
+      }
 
-max-width: 768px {
-  .hero {
-    margin-top: 0;
-  }
-}
-}
+      /* Адаптив: на телефоне убираем отрицательный отступ, чтобы не ломалось */
+      @media (max-width: 768px) {
+        .hero {
+          margin-top: 0;
+          padding: 2rem 1rem;
+        }
+        .logo-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -176,12 +183,13 @@ max-width: 768px {
         <img src="logo.png.png" alt="Логотип" class="logo-img">
       </div>
       <nav>
-        <!-- Красивая кнопка с эмодзи -->
-        <a id="open-contacts" class="contacts-btn">📞 Контакты</a>
+        <!-- Кнопка с обновлённым стилем -->
+        <a id="open-contacts" class="contacts-btn">📞 Связаться</a>
       </nav>
     </header>
 
     <main>
+      <!-- Главная карточка поднята вверх -->
       <section class="hero">
         <h1>Пироги, бизнес‑ланчи, десерты — быстро и вкусно</h1>
         <p>Свежие пироги, сытные бизнес‑ланчи и сладкие десерты — доставим вовремя.</p>
@@ -226,9 +234,10 @@ max-width: 768px {
       </section>
     </main>
 
+    <!-- Окно контактов с новыми эмодзи -->
     <div class="modal-overlay" id="contactsModal">
       <div class="modal">
-        <h2 style="margin-top:0; color:var(--dark-green);">Наши контакты</h2>
+        <h2 style="margin-top:0; color:var(--dark-green); font-size:1.5rem;">Наши контакты</h2>
         <div style="margin-bottom:1rem; line-height:1.6;">
           📞 <strong>Шеф‑повар:</strong> <a href="tel:+79080609620" style="color:var(--primary-green); text-decoration:none;">+7 908 060‑96‑20</a>
         </div>
@@ -236,10 +245,10 @@ max-width: 768px {
           📞 <strong>Менеджер:</strong> <a href="tel:+79048085690" style="color:var(--primary-green); text-decoration:none;">+7 904 808‑56‑90</a>
         </div>
         <div style="margin-bottom:1rem;">
-          <a href="https://vk.ru/club239723154" style="color:var(--primary-green); text-decoration:none;">📘 Группа ВК</a>
+          <a href="https://vk.ru/club239723154" style="color:var(--primary-green); text-decoration:none; display:block;">💬 Группа ВК</a>
         </div>
         <div style="margin-bottom:1rem;">
-          <a href="https://t.me/Cooking_with_love0" style="color:var(--primary-green); text-decoration:none;">✈️ Telegram‑канал</a>
+          <a href="https://t.me/Cooking_with_love0" style="color:var(--primary-green); text-decoration:none; display:block;">✈️ Telegram‑канал</a>
         </div>
         <div style="text-align:center;">
           <button class="btn-close" id="close-contacts">Закрыть</button>
