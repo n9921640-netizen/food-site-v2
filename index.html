@@ -19,7 +19,6 @@
         color: #333;
       }
 
-      /* ГЛАВНОЕ ИЗМЕНЕНИЕ: у шапки нет фона и тени. Никакой белой полоски */
       header {
         padding: 1rem 2rem;
         display: flex;
@@ -33,7 +32,6 @@
         gap: 8px;
       }
 
-      /* Логотип — круглый, даже если картинка квадратная */
       .logo-img {
         width: 160px;
         height: 160px;
@@ -42,14 +40,22 @@
         display: block;
       }
 
-      nav a {
+      /* Красивая кнопка «Контакты» */
+      .contacts-btn {
+        display: inline-block;
+        padding: 0.7rem 1.2rem;
+        background-color: var(--primary-green);
+        color: white;
         text-decoration: none;
-        color: var(--dark-green);
+        border-radius: 8px;
         font-weight: 600;
         cursor: pointer;
+        box-shadow: 0 4px 6px rgba(46, 139, 87, 0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
       }
-      nav a:hover {
-        color: var(--primary-green);
+      .contacts-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(46, 139, 87, 0.3);
       }
 
       main {
@@ -61,13 +67,14 @@
       .hero {
         text-align: center;
         padding: 3rem 1rem;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.95);
         border-radius: 16px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       }
 
+      /* Уменьшили заголовок */
       .hero h1 {
-        font-size: 2.4rem;
+        font-size: 2rem;
         margin: 0 0 0.5rem 0;
         color: var(--dark-green);
       }
@@ -79,41 +86,42 @@
         margin: 0 auto;
       }
 
-      /* Адаптивная сетка: на телефоне в 1 колонку, на ПК в несколько */
+      /* Улучшенный адаптив: на телефоне всегда 1 колонка, на ПК — сетка */
       .categories {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.8rem;
+        margin-top: 2.5rem;
       }
 
       .category-card {
         background: white;
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        padding: 1.7rem;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
         text-align: center;
         cursor: pointer;
-        transition: transform 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
       .category-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       }
       .category-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.8rem;
+        font-size: 2.6rem;
+        margin-bottom: 1rem;
       }
       .category-title {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         color: var(--dark-green);
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.5rem;
       }
       .category-desc {
-        color: #666;
-        font-size: 0.95rem;
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
       }
 
-      /* Модальное окно */
       .modal-overlay {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -125,43 +133,47 @@
       }
       .modal {
         background: white;
-        padding: 1.5rem;
-        border-radius: 12px;
+        padding: 1.8rem;
+        border-radius: 14px;
         width: 90%;
-        max-width: 360px;
+        max-width: 380px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.15);
       }
       .btn-close {
-        background: #eee;
+        background: #f0f0f0;
         border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 6px;
+        padding: 0.8rem 1.4rem;
+        border-radius: 8px;
         cursor: pointer;
+        font-weight: 600;
+        color: #444;
+      }
+      .btn-close:hover {
+        background: #e0e0e0;
       }
 
       footer {
         text-align: center;
-        padding: 2rem;
+        padding: 2.5rem;
         color: #777;
         margin-top: 3rem;
       }
     </style>
   </head>
   <body>
-    <!-- Шапка без белой плашки -->
     <header>
       <div class="logo-area">
-        <!-- Оставил как ты просил: logo.png.png -->
         <img src="logo.png.png" alt="Логотип" class="logo-img">
       </div>
       <nav>
-        <!-- Кнопка с эмодзи: твой 📞 + новый 💬 -->
-        <a id="open-contacts">📞💬 Контакты</a>
+        <!-- Красивая кнопка с эмодзи -->
+        <a id="open-contacts" class="contacts-btn">📞💬 Контакты</a>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <h1>Пироги, бизнес ланчи, десерты — быстро и вкусно</h1>
+        <h1>Пироги, бизнес‑ланчи, десерты — быстро и вкусно</h1>
         <p>Свежие пироги, сытные бизнес‑ланчи и сладкие десерты — доставим вовремя.</p>
       </section>
 
@@ -169,41 +181,56 @@
         <article class="category-card">
           <div class="category-icon">🥧</div>
           <h3 class="category-title">Пироги</h3>
-          <p class="category-desc">Сочные начинки, пышное тесто и хрустящая корочка.</p>
+          <p class="category-desc">
+            Сочные начинки, пышное тесто и хрустящая корочка — пироги, которые хочется есть снова и снова.
+          </p>
         </article>
         <article class="category-card">
           <div class="category-icon">🍱</div>
           <h3 class="category-title">Бизнес‑ланчи</h3>
-          <p class="category-desc">Сбалансированные обеды: сытно и удобно.</p>
+          <p class="category-desc">
+            Сбалансированные обеды для занятых: сытно, удобно и по делу — идеально для офиса и дома.
+          </p>
         </article>
         <article class="category-card">
           <div class="category-icon">❄️</div>
           <h3 class="category-title">Заморозка</h3>
-          <p class="category-desc">Полуфабрикаты премиум‑качества.</p>
+          <p class="category-desc">
+            Полуфабрикаты и заготовки премиум‑качества: удобно хранить, легко готовить.
+          </p>
         </article>
         <article class="category-card">
           <div class="category-icon">🎉</div>
           <h3 class="category-title">Банкеты под ключ</h3>
-          <p class="category-desc">Полное сопровождение банкета.</p>
+          <p class="category-desc">
+            Полное сопровождение: меню, сервировка, доставка и подача — организуем банкет любого масштаба без лишних забот.
+          </p>
         </article>
-        
-        <!-- НОВАЯ КАРТОЧКА: Десерты -->
         <article class="category-card">
           <div class="category-icon">🍰</div>
           <h3 class="category-title">Десерты</h3>
-          <p class="category-desc">Торты, пирожные и сезонные лакомства.</p>
+          <p class="category-desc">
+            Торты, пирожные и сезонные лакомства — сладкие радости для любого повода.
+          </p>
         </article>
       </section>
     </main>
 
-    <!-- Окно контактов -->
     <div class="modal-overlay" id="contactsModal">
       <div class="modal">
-        <h2>Наши контакты</h2>
-        <div style="margin-bottom:1rem;">📞 Шеф‑повар: <a href="tel:+79080609620">+7 908 060‑96‑20</a></div>
-        <div style="margin-bottom:1rem;">📞 Менеджер: <a href="tel:+79048085690">+7 904 808‑56‑90</a></div>
-        <div style="margin-bottom:1rem;"><a href="https://vk.ru/club239723154">Группа ВК</a></div>
-        <div style="margin-bottom:1rem;"><a href="https://t.me/Cooking_with_love0">Telegram‑канал</a></div>
+        <h2 style="margin-top:0; color:var(--dark-green);">Наши контакты</h2>
+        <div style="margin-bottom:1rem; line-height:1.6;">
+          📞 <strong>Шеф‑повар:</strong> <a href="tel:+79080609620" style="color:var(--primary-green); text-decoration:none;">+7 908 060‑96‑20</a>
+        </div>
+        <div style="margin-bottom:1rem; line-height:1.6;">
+          📞 <strong>Менеджер:</strong> <a href="tel:+79048085690" style="color:var(--primary-green); text-decoration:none;">+7 904 808‑56‑90</a>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <a href="https://vk.ru/club239723154" style="color:var(--primary-green); text-decoration:none;">📘 Группа ВК</a>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <a href="https://t.me/Cooking_with_love0" style="color:var(--primary-green); text-decoration:none;">✈️ Telegram‑канал</a>
+        </div>
         <div style="text-align:center;">
           <button class="btn-close" id="close-contacts">Закрыть</button>
         </div>
@@ -211,7 +238,7 @@
     </div>
 
     <footer>
-      &copy; 2026 не надо готовить надо просто заказать доставим быстро будет вкусно 
+      &copy; 2026 не надо готовить — надо просто заказать. Доставим быстро, будет вкусно!
     </footer>
 
     <script>
