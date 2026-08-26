@@ -6,16 +6,16 @@
     <title>Пироги, бизнес‑ланчи, десерты</title>
     <style>
       :root {
-        --primary-green: #228B22;       /* Чуть более насыщенный, «природный» зелёный */
-        --dark-green: #1a661a;          /* Тёмно-зелёный для текста */
-        --bg-pattern: radial-gradient(circle at 50% 50%, #f0f9f0 0%, #e6f4ff 100%); /* Лёгкий зеленовато-голубой фон */
+        --primary-green: #2E8B57;
+        --dark-green: #1E5D3A;
       }
 
       body {
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--bg-pattern);
+        /* Лёгкий зеленоватый узор-градиент */
+        background: radial-gradient(circle at 50% 0%, rgba(46, 139, 87, 0.08) 0%, transparent 40%), #f5fbf5;
         color: #333;
       }
 
@@ -40,41 +40,42 @@
         display: block;
       }
 
-      /* Красивая, стильная кнопка */
+      /* Красивая кнопка «Контакты» */
       .contacts-btn {
         display: inline-block;
-        padding: 0.75rem 1.3rem;
+        padding: 0.8rem 1.4rem;
         background-color: var(--primary-green);
         color: white;
         text-decoration: none;
         border-radius: 10px;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(34, 139, 34, 0.25);
-        border: 2px solid rgba(255,255,255,0.3); /* Лёгкая белая рамка */
+        box-shadow: 0 6px 12px rgba(46, 139, 87, 0.25);
+        border: 2px solid rgba(255,255,255,0.3);
         transition: all 0.3s ease;
       }
       .contacts-btn:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 18px rgba(34, 139, 34, 0.35);
-        background-color: #1e8b1e;
+        transform: scale(1.05);
+        background-color: #227b4c;
+        box-shadow: 0 8px 16px rgba(46, 139, 87, 0.35);
       }
 
       main {
         max-width: 1200px;
-        margin: 2rem auto;
+        margin: 0 auto;
         padding: 0 1rem;
       }
 
+      /* ГЛАВНОЕ: поднимаем карточку вверх */
       .hero {
         text-align: center;
-        padding: 2.5rem 1rem; /* Чуть меньше отступов внутри самой карточки */
+        padding: 3rem 1rem;
         background: rgba(255, 255, 255, 0.98);
         border-radius: 18px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         
-        /* ГЛАВНОЕ: поднимаем карточку вверх */
-        margin-top: -1rem; 
+        /* Сдвигаем вверх на 40px */
+        margin-top: -40px;
       }
 
       .hero h1 {
@@ -90,36 +91,36 @@
         margin: 0 auto;
       }
 
-      /* Сетка: карточки чуть компактнее */
+      /* Карточки: чтобы все 5 влезли в одну линию */
       .categories {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Чуть уже карточки, чтобы влезли все */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1.5rem;
-        margin-top: 2rem;
+        margin-top: 2.5rem;
+        padding-top: 40px; /* чтобы после поднятой карточки было ровно */
       }
 
       .category-card {
         background: white;
-        padding: 1.4rem; /* Уменьшили, чтобы карточки были компактнее */
+        padding: 1.3rem; /* чуть компактнее */
         border-radius: 14px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         text-align: center;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .category-card:hover {
-        transform: scale(1.04); /* Эффект увеличения вместо простого сдвига */
+        transform: translateY(-6px);
         box-shadow: 0 12px 20px rgba(0,0,0,0.12);
-        z-index: 10;
       }
       .category-icon {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
         margin-bottom: 1rem;
       }
       .category-title {
-        font-size: 1.35rem;
+        font-size: 1.3rem;
         color: var(--dark-green);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
       }
       .category-desc {
         color: #666;
@@ -164,15 +165,15 @@
         margin-top: 4rem;
       }
 
-      /* Адаптив: на телефоне убираем отрицательный отступ, чтобы не ломалось */
+      /* На телефонах убираем сдвиг вверх, чтобы не ломалось */
       @media (max-width: 768px) {
         .hero {
           margin-top: 0;
           padding: 2rem 1rem;
         }
         .logo-img {
-          width: 120px;
-          height: 120px;
+          width: 110px;
+          height: 110px;
         }
       }
     </style>
@@ -180,16 +181,16 @@
   <body>
     <header>
       <div class="logo-area">
+        <!-- Проверь название файла: если у тебя просто logo.png, поменяй src="logo.png" -->
         <img src="logo.png.png" alt="Логотип" class="logo-img">
       </div>
       <nav>
-        <!-- Кнопка с обновлённым стилем -->
         <a id="open-contacts" class="contacts-btn">📞 Связаться</a>
       </nav>
     </header>
 
     <main>
-      <!-- Главная карточка поднята вверх -->
+      <!-- Эта карточка теперь поднята вверх -->
       <section class="hero">
         <h1>Пироги, бизнес‑ланчи, десерты — быстро и вкусно</h1>
         <p>Свежие пироги, сытные бизнес‑ланчи и сладкие десерты — доставим вовремя.</p>
